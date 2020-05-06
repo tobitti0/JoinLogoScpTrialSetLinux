@@ -1,7 +1,7 @@
 # JoinLogoScpTrialSet for Linux and Avisynth+3.5.x
 ## 概要
 
-[sogaani][1]氏が移植された[Linux対応版join_logo_scp][2]を元に  
+[sogaani][1]氏が移植された[Linux対応版join_logo_scp][2]を元に改造し  
 Native Linuxに対応した[AviSynth+][3][3.5.x][4]で動作できるようにしたもののセット。  
 DockerとDocker-composeを用いて動作させます。  
 
