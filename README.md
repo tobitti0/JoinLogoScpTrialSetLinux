@@ -30,7 +30,7 @@ FFmpegその他ライブラリをビルドしますのではやくても10分程
 気長に待ってください。
 こんな感じのnodejsのエラーが出たら完了です。  
 ````bash
-in_logo_scp_trial      | > node src/jlse.js "-i"
+join_logo_scp_trial    | > node src/jlse.js "-i"
 join_logo_scp_trial    |
 join_logo_scp_trial    | invalid file extension .
 join_logo_scp_trial    | Options:
