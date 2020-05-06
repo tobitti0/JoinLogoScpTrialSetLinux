@@ -19,8 +19,9 @@ RUN set -xe && \
         cmake qtbase5-dev checkinstall gcc-9 g++-9 curl \
         python3-pip ninja-build \
     &&\
-    pip3 install meson
-
+    pip3 install meson && \
+    apt-get clean && \
+    aptitude clean
 
 # nasm
 RUN set -xe && \
@@ -35,7 +36,8 @@ RUN set -xe && \
     ./configure --prefix=/usr/local && \
     make -j$(nproc) && \
     make install && \
-    ldconfig
+    ldconfig && \
+    rm -r /tmp/*
 
 # yasm
 RUN set -xe && \
@@ -50,7 +52,8 @@ RUN set -xe && \
       --prefix=/usr/local && \
     make -j$(nproc) && \
     make install && \
-    ldconfig
+    ldconfig && \
+    rm -r /tmp/*
 
 # l-smash
 RUN set -xe && \
@@ -62,7 +65,8 @@ RUN set -xe && \
       && \
     make && \
     make install && \
-    ldconfig
+    ldconfig && \
+    rm -r /tmp/*
 
 # libx264
 RUN set -xe && \
@@ -76,7 +80,8 @@ RUN set -xe && \
     && \
     make && \
     make install && \
-    ldconfig
+    ldconfig && \
+    rm -r /tmp/*
 
 # libvpx
 RUN set -xe && \
@@ -91,7 +96,8 @@ RUN set -xe && \
     && \
     make -j$(nproc) && \
     make install && \
-    ldconfig
+    ldconfig && \
+    rm -r /tmp/*
 
 # libfdk-aac
 RUN set -xe && \
@@ -103,7 +109,8 @@ RUN set -xe && \
     && \
     make -j$(nproc) && \
     make install && \
-    ldconfig
+    ldconfig && \
+    rm -r /tmp/*
 
 # libmp3lame
 RUN set -xe && \
@@ -120,7 +127,8 @@ RUN set -xe && \
     && \
     make -j$(nproc) && \
     make install && \
-    ldconfig
+    ldconfig && \
+    rm -r /tmp/*
 
 # libopus
 RUN set -xe && \
@@ -133,7 +141,8 @@ RUN set -xe && \
     && \
     make -j$(nproc) && \
     make install && \
-    ldconfig
+    ldconfig && \
+    rm -r /tmp/*
 
 #AviSynth+
 RUN set -xe && \
@@ -157,7 +166,9 @@ RUN set -xe && \
       --stripso=yes \
       --addso=yes \
       --fstrans=no \
-      --default ninja install
+      --default ninja install \
+    && \
+    rm -r /tmp/*
 
 # FFmpeg
 RUN set -xe && \
@@ -185,10 +196,22 @@ RUN set -xe && \
       --enable-nonfree \
       && \
     make CC=gcc-9 CXX=gcc-9 LD=gcc-9 -j$(nproc) && \
-    checkinstall --pkgname=ffmpeg --pkgversion="7:$(git rev-list \
-    --count HEAD)-g$(git rev-parse --short HEAD)" --backup=no --deldoc=yes \
-    --delspec=yes --deldesc=yes --strip=yes --stripso=yes --addso=yes \
-    --fstrans=no --default
+    checkinstall \
+      --pkgname=ffmpeg \
+      --pkgversion="7:$(git rev-list \
+        --count HEAD)-g$(git rev-parse --short HEAD)" \
+    --backup=no \
+    --deldoc=yes \
+    --delspec=yes \
+    --deldesc=yes \
+    --strip=yes \
+    --stripso=yes \
+    --addso=yes \
+    --fstrans=no \
+    --default \
+    && \
+    apt-get clean all && \
+    rm -r /tmp/*
 
 #FFMS2
 RUN set -xe && \
@@ -202,7 +225,8 @@ RUN set -xe && \
     checkinstall --pkgname=ffms2 --pkgversion="1:$(./version.sh)-git" \
     --backup=no --deldoc=yes --delspec=yes --deldesc=yes --strip=yes --stripso=yes \
     --addso=yes --fstrans=no --default && \
-    ldconfig
+    ldconfig && \
+    rm -r /tmp/*
 
 # l-smash-source
 RUN set -xe && \
@@ -214,10 +238,32 @@ RUN set -xe && \
     cd build && \
     ninja -v && \
     ninja install && \
-    ldconfig
+    ldconfig && \
+    rm -r /tmp/*
 
+# nodejs
+RUN set -xe && \
+    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    apt-get update && \
+    apt-get install -y nodejs && \
+    node -v
+
+# join_logo_scp_trial
 ADD modules /tmp/modules
 RUN set -xe && \
-    cd /tmp/modules && \
-    ls -la
-ENTRYPOINT ["ffmpeg"]
+    cd /tmp/modules/chapter_exe/src && \
+    make && \
+    mv chapter_exe /tmp/modules/join_logo_scp_trial/bin/ && \
+    cd /tmp/modules/logoframe/src && \
+    make && \
+    mv logoframe /tmp/modules/join_logo_scp_trial/bin/ && \
+    cd /tmp/modules/join_logo_scp/src && \
+    make && \
+    mv join_logo_scp /tmp//modules/join_logo_scp_trial/bin/ && \    
+    mv /tmp/modules/join_logo_scp_trial /join_logo_scp_trial && \
+    cd /join_logo_scp_trial && \
+    npm install && \
+    rm -r /tmp/*
+
+WORKDIR /join_logo_scp_trial
+ENTRYPOINT ["npm", "start", "--" ,"-i"]
