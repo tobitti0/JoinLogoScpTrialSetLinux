@@ -1,0 +1,12 @@
+[submodule "modules/chapter_exe"]
+	path = modules/chapter_exe
+	url = https://github.com/tobitti0/chapter_exe.git
+[submodule "modules/logoframe"]
+	path = modules/logoframe
+	url = https://github.com/tobitti0/logoframe.git
+[submodule "modules/join_logo_scp"]
+	path = modules/join_logo_scp
+	url = https://github.com/tobitti0/join_logo_scp.git
+[submodule "modules/join_logo_scp_trial"]
+	path = modules/join_logo_scp_trial
+	url = https://github.com/tobitti0/join_logo_scp_trial.git
