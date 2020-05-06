@@ -4,8 +4,9 @@ services:
     image: join_logo_scp_trial
     build:
       context: .
-#      dockerfile: ./docker/ubuntu19.10/Dockerfile
-      dockerfile: ./docker/cuda:10.0-devel-ubuntu18.04/Dockerfile
+      dockerfile: ./docker/ubuntu19.10/Dockerfile
+#      dockerfile: ./docker/cuda:10.0-devel-ubuntu18.04/Dockerfile
+#    runtime: nvidia
     volumes:
       - ./JL:/join_logo_scp_trial/JL
       - ./logo:/join_logo_scp_trial/logo
