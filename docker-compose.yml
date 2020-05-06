@@ -1,6 +1,7 @@
 version: "2"
 services:
   join_logo_scp_trial:
+    container_name: join_logo_scp_trial
     image: join_logo_scp_trial
     build:
       context: .
