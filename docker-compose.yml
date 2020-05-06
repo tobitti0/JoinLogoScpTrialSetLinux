@@ -1,0 +1,15 @@
+version: "2"
+services:
+  join_logo_scp_trial:
+    image: join_logo_scp_trial
+    build:
+      context: .
+#      dockerfile: ./docker/ubuntu19.10/Dockerfile
+      dockerfile: ./docker/cuda:10.0-devel-ubuntu18.04/Dockerfile
+    volumes:
+      - ./JL:/join_logo_scp_trial/JL
+      - ./logo:/join_logo_scp_trial/logo
+      - ./result:/join_logo_scp_trial/result
+      - ./setting:/join_logo_scp_trial/setting
+      - ./src:/join_logo_scp_trial/src
+
