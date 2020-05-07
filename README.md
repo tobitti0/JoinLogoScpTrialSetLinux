@@ -28,9 +28,12 @@ docker-compose up --build
 FFmpegその他ライブラリをビルドしますのではやくても10分程度はかかります。  
 環境次第ではもっとかかると思います。  
 気長に待ってください。
-こんな感じのnodejsのエラーが出たら完了です。  
+次のログが出たら完了です。  
 ````bash
-join_logo_scp_trial    | > node src/jlse.js "-i"
+Attaching to join_logo_scp_trial
+join_logo_scp_trial    | 
+join_logo_scp_trial    | > join_logo_scp_trial@1.0.0 start /join_logo_scp_trial
+join_logo_scp_trial    | > node src/jlse.js "-i" "--help"
 join_logo_scp_trial    |
 join_logo_scp_trial    | invalid file extension .
 join_logo_scp_trial    | Options:
@@ -38,7 +41,7 @@ join_logo_scp_trial    |   --version     Show version number                    
 join_logo_scp_trial    |   --input, -i   path to ts file                              [string] [required]
 join_logo_scp_trial    |   --filter, -f  enable to ffmpeg filter output        [boolean] [default: false]
 join_logo_scp_trial    |   --help        Show help                                              [boolean]
-（下にも続く）
+Join_logo_scp_trial exited with code 0
 ````
 logoフォルダが生成されていると思うので、そこにロゴデータを入れておきます。
 ## 使用方法
