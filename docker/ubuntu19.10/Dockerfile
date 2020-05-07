@@ -267,3 +267,4 @@ RUN set -xe && \
 
 WORKDIR /join_logo_scp_trial
 ENTRYPOINT ["npm", "start", "--" ,"-i"]
+CMD ["--help"]
