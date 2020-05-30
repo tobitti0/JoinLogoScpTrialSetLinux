@@ -54,7 +54,26 @@ docker-compose run --rm -v 「TSファイルのフォルダの絶対パス」:/t
 
 例:~/record/ts/局名_タイトル第1話.tsを解析する場合  
 `docker-compose run --rm -v ~/record/ts:/ts join_logo_scp_trial /ts/局名_タイトル第1話.ts`  
-resultフォルダの中のファイル名のフォルダに解析結果と、カット用のavsが保存されます。
+resultフォルダの中のファイル名のフォルダに解析結果と、カット用のavsが保存されます。  
+join_logo_scp_trialの詳しい使用方法は、[こちら][5]を確認してください。 
+
+[5]:https://github.com/tobitti0/join_logo_scp_trial/blob/master/README.md
+
+## EPGStationで使用する（仮）
+
+TODO：EPGStaionとの連携方法等を用意する。 
+
+（私はEPGStationで呼び出し、CM解析をし、ロゴ消し、CMカット、エンコードまで動作させています。  
+時間ができれば、追記しますが、ひとまず重要なことを記載しておきます。  ）
+Dockerで動作しているEPGStationを利用していますが、動作にはHOMEの環境変数が必須です。  
+ないとchapter_exe,logoframe,join_logo_scpから、avsファイルを見つけることができず動作しません。  
+Dockerでの動作しか確認していませんが、spawnする際に次のようにすることで動作します。  
+```
+var env = Object.create( process.env );
+env.HOME = '/root';
+const child = spawn('jlse', jlse_args, {env: env});
+```
+（Dockerで動作させていない場合はHOMEの値は異なると思います。Dockerだといじっていなければrootです。）
 
 ## ファイル構成
 * docker              : join_logo_scp動作確認環境構築用Dockerfile
@@ -69,4 +88,5 @@ resultフォルダの中のファイル名のフォルダに解析結果と、�
 各種ツールを作成された方々、  
 Linuxに移植されたsogaani氏に深く感謝いたします。
 ## 履歴
+* 2020/05/30 エンコードまで一括で行えるようにしたjoin_logo_scp_trialに更新
 * 2020/05/06 公開
