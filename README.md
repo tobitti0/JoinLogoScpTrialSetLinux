@@ -61,10 +61,11 @@ join_logo_scp_trialの詳しい使用方法は、[こちら][5]を確認して�
 
 ## EPGStationで使用する（仮）
 
-TODO：EPGStaionとの連携方法等を用意する。 
+LinuxなEPGStationでDockerを環境の場合の導入方法は[こちら][6]
 
-（私はEPGStationで呼び出し、CM解析をし、ロゴ消し、CMカット、エンコードまで動作させています。  
-時間ができれば、追記しますが、ひとまず重要なことを記載しておきます。  ）
+[6]:https://tobitti.net/blog/Ubuntu-EPGStation-JoinLogoScpTrial/
+
+（私はEPGStationで呼び出し、CM解析をし、ロゴ消し、CMカット、エンコードまで動作させています。）   
 Dockerで動作しているEPGStationを利用していますが、動作にはHOMEの環境変数が必須です。  
 ないとchapter_exe,logoframe,join_logo_scpから、avsファイルを見つけることができず動作しません。  
 Dockerでの動作しか確認していませんが、spawnする際に次のようにすることで動作します。  
