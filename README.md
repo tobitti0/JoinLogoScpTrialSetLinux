@@ -59,9 +59,9 @@ join_logo_scp_trialの詳しい使用方法は、[こちら][5]を確認して�
 
 [5]:https://github.com/tobitti0/join_logo_scp_trial/blob/master/README.md
 
-## EPGStationで使用する（仮）
+## EPGStationで使用する
 
-LinuxなEPGStationでDockerを環境の場合の導入方法は[こちら][6]
+LinuxなEPGStationでDocker環境の場合の導入方法は[こちら][6]
 
 [6]:https://tobitti.net/blog/Ubuntu-EPGStation-JoinLogoScpTrial/
 
