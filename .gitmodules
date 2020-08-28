@@ -10,3 +10,6 @@
 [submodule "modules/join_logo_scp_trial"]
 	path = modules/join_logo_scp_trial
 	url = https://github.com/tobitti0/join_logo_scp_trial.git
+[submodule "modules/tsdivider"]
+	path = modules/tsdivider
+	url = https://github.com/tobitti0/tsdivider
