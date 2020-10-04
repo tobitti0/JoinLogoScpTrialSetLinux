@@ -51,7 +51,7 @@ const crf = 23;
 
 const args = ['-y', '-analyzeduration', analyzedurationSize, '-probesize', probesizeSize];
 
-const fs = require('fs');
+const path = require('path');
 const output_name = path.basename(output, path.extname(output));
 const output_dir = path.dirname(output);
 
