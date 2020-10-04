@@ -1,6 +1,6 @@
 # インストール
 ## 目次
-- [avisynth+](#avisynth+)
+- [avisynth+](#avisynth)
 - [l-smash](#l-smash)
 - [FFmpeg](#FFmpeg)
 - [l-smash-works](#l-smash-works)
