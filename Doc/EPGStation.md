@@ -141,7 +141,7 @@ preset='medium'
 codec='libx264'
 crf=23
 
-FFOPTION="-y -analyzeduration $analyzedurationSize -probesize $probesizeSize -movflags faststart -vf yadif -preset     $preset -aspect 16:9 -c:v $codec -crf $crf -f mp4 -c:a aac -ar 48000 -ab 192k -ac 2"
+FFOPTION="-y -analyzeduration $analyzedurationSize -probesize $probesizeSize -movflags faststart -vf yadif -preset $preset -aspect 16:9 -c:v $codec -crf $crf -f mp4 -c:a aac -ar 48000 -ab 192k -ac 2"
 
 jlse -i "$1" -e -o " $FFOPTION" -r -d "$outdir" -n "$outfilename"
 ```
