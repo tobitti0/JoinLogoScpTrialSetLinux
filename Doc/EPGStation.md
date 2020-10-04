@@ -115,7 +115,7 @@ process.on('SIGINT', () => {
 encode
 ```
 {
-    "name": "jls",
+    "name": "jls_js",
     "cmd": "%NODE% %ROOT%/config/jlse.js",
     "suffix": ".mp4",
     "default": true
@@ -128,10 +128,8 @@ encode
 #!/bin/bash
 export HOME="/root"
 
-input=$1
-outpath=$2
-outfilename=`basename "$2" .${outpath##*.}`
-outdir=`dirname "$2"`
+outfilename=`basename "$OUTPUT" .${OUTPUT##*.}`
+outdir=`dirname "$OUTPUT"`
 
 analyzedurationSize='10M' #Mirakurun の設定に応じて変更すること
 probesizeSize='32M' #Mirakurun の設定に応じて変更すること
@@ -140,17 +138,19 @@ dualMonoMode='main'
 preset='medium'
 codec='libx264'
 crf=23
+videofilter='yadif'
+audioBitrate='192k'
 
-FFOPTION="-y -analyzeduration $analyzedurationSize -probesize $probesizeSize -movflags faststart -vf yadif -preset $preset -aspect 16:9 -c:v $codec -crf $crf -f mp4 -c:a aac -ar 48000 -ab 192k -ac 2"
+ffoption="-y -analyzeduration $analyzedurationSize -probesize $probesizeSize -movflags faststart -vf $videofilter -preset $preset -aspect 16:9 -c:v $codec -crf $crf -f mp4 -c:a aac -ar 48000 -ab $audioBitrate -ac 2"
 
-jlse -i "$1" -e -o " $FFOPTION" -r -d "$outdir" -n "$outfilename"
+jlse -i "$INPUT" -e -o " $ffoption" -r -d "$outdir" -n "$outfilename"
 ```
 `epgstation/config/config.json`
 encode
 ```
 {
-    "name": "jls",
-    "cmd": "/bin/bash %ROOT%/config/jlse.sh %INPUT% %OUTPUT%",
+    "name": "jls_sh",
+    "cmd": "/bin/bash %ROOT%/config/jlse.sh",
     "suffix": ".mp4",
     "default": true
 }
