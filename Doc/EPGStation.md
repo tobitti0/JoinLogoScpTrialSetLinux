@@ -53,6 +53,7 @@ const args = ['-y', '-analyzeduration', analyzedurationSize, '-probesize', probe
 
 const fs = require('fs');
 const output_name = path.basename(output, path.extname(output));
+const output_dir = path.dirname(output);
 
 // dual mono 設定
 if (isDualMono) {
@@ -91,7 +92,7 @@ for (let i of args) {
 }
 console.error(str);
 
-const jlse_args = ['-i', input, '-e', '-o', str,'-r', '-n', output_name];
+const jlse_args = ['-i', input, '-e', '-o', str,'-r', '-d', output_dir, '-n', output_name];
 console.error(jlse_args);
 
 var env = Object.create( process.env );
@@ -130,7 +131,7 @@ export HOME="/root"
 input=$1
 outpath=$2
 outfilename=`basename $2`
-outdir=`dirname $2`
+outdir=`dirname "$2"`
 
 analyzedurationSize='10M' #Mirakurun の設定に応じて変更すること
 probesizeSize='32M' #Mirakurun の設定に応じて変更すること
