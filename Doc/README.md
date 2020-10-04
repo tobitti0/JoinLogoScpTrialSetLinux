@@ -5,6 +5,6 @@
 また、Issueをいただければ時間のあるときにドキュメントの修正はします。  
 サブモジュールの問題はサブモジュールのIssueへお願いいたします。
 ## ドキュメントリスト
-- [ビルド](URL)
-- [EPGStationとの連携](URL)
+- [インストール](https://github.com/tobitti0/JoinLogoScpTrialSetLinux/blob/AddDocuments/Doc/Install.md)
+- [EPGStationとの連携](https://github.com/tobitti0/JoinLogoScpTrialSetLinux/blob/AddDocuments/Doc/EPGStation.md)
 
