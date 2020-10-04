@@ -130,7 +130,7 @@ export HOME="/root"
 
 input=$1
 outpath=$2
-outfilename=`basename "$2" .mp4`
+outfilename=`basename "$2" .${outpath##*.}`
 outdir=`dirname "$2"`
 
 analyzedurationSize='10M' #Mirakurun の設定に応じて変更すること
