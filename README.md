@@ -28,7 +28,7 @@ docker-compose up --build
 FFmpegその他ライブラリをビルドしますのではやくても10分程度はかかります。  
 環境次第ではもっとかかると思います。  
 気長に待ってください。
-次のログが出たら完了です。  
+次のようなログが出たら完了です。  
 ````bash
 Attaching to join_logo_scp_trial
 join_logo_scp_trial    | 
@@ -62,28 +62,22 @@ join_logo_scp_trialの詳しい使用方法は、[こちら][5]を確認して�
 ## EPGStationで使用する
 
 LinuxなEPGStationでDocker環境の場合の導入方法は[こちら][6]
+連携例を用意しています。[ドキュメント][7]を参照してください。
 
 [6]:https://tobitti.net/blog/Ubuntu-EPGStation-JoinLogoScpTrial/
+[7]:https://tobitti.net/blog/Ubuntu-EPGStation-JoinLogoScpTrial/Doc/EPGStation.md
 
-（私はEPGStationで呼び出し、CM解析をし、ロゴ消し、CMカット、エンコードまで動作させています。）   
-Dockerで動作しているEPGStationを利用していますが、動作にはHOMEの環境変数が必須です。  
-ないとchapter_exe,logoframe,join_logo_scpから、avsファイルを見つけることができず動作しません。  
-Dockerでの動作しか確認していませんが、spawnする際に次のようにすることで動作します。  
-```
-var env = Object.create( process.env );
-env.HOME = '/root';
-const child = spawn('jlse', jlse_args, {env: env});
-```
-（Dockerで動作させていない場合はHOMEの値は異なると思います。Dockerだといじっていなければrootです。）
 
 ## ファイル構成
 * docker              : join_logo_scp動作確認環境構築用Dockerfile
+* Doc                 : ドキュメント類
 
 以下はmodulesの中にsubmoduleとして入っています。個別に利用する場合はそちらのReadmeを見てください。
 * logoframe           : 透過ロゴ表示区間検出 ver1.16（要AviSynth環境）
 * chapter_exe         : 無音＆シーンチェンジ検索chapter_exeの改造版（要AviSynth環境）
 * join_logo_scp       : ロゴと無音シーンチェンジを使ったCM自動カット位置情報作成
 * join_logo_scp_trial : join_logo_scp動作確認用スクリプト
+* tsdivider           : 番組の前後の残骸を取り除くツールです。(要libboost-all-dev)
 
 ## 謝辞
 各種ツールを作成された方々、  
