@@ -3,7 +3,7 @@ Dockerでの動作ができないため、ローカルにインストールを�
 Raspberry Pi 4B + Raspbian 32bitと　Orange Pi3 + Armbianの環境でセットアップが可能なことを確認しています。
 今回はRaspberry Pi + Raspbian 32bit を例に説明を行います。
 
-# 必要なパッケージなどなどインストール
+# 必要なパッケージなどをインストール
 ```
 sudo apt-get install build-essential cmake ninja-build libmp3lame-dev libopus-dev libvorbis-dev libvpx-dev libx265-dev libx264-dev libavcodec-dev libavformat-dev libswscale-dev libatomic-ops-dev automake libtool autoconf nodejs sudo libxft-dev
 sudo apt-get install meson npm
