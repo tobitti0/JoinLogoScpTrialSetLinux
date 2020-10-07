@@ -118,7 +118,7 @@ sudo npm install
 sudo npm link
 jlse --help
 ```
-**ロゴデータ(.lgd)を`logo`フォルダに入れる必要があります(入れないとロゴ消しができません)。具体的には`/opt/join_logo_scp_trial/logo/`フォルダにロゴデータをあらかじめ入れておいてください。**  
+**ロゴデータ(.lgd)を`logo`フォルダに入れる必要があります(入れないとロゴ消しができません)。このドキュメント通りに設定した場合は`/opt/join_logo_scp_trial/logo/`フォルダにロゴデータを入れてください。**  
   
 最後のコマンドで以下のような表示になっていればインストール完了です。
 ```
@@ -147,7 +147,7 @@ sudo make install
 ```
 以上でjoin_logo_scpのインストールは完了です。
 # 補足
-join_logo_scpの各種保存先は以下のディレクトリです。
+このドキュメント通りに設定した場合のjoin_logo_scpの各種保存先は以下のディレクトリです。
 ```
 /opt/join_logo_scp/
 ```
