@@ -14,7 +14,7 @@ RUN set -xe && \
     aptitude install -y \
         wget build-essential automake autoconf git libtool libvorbis-dev \
         libass-dev libfreetype6-dev libsdl2-dev libva-dev libvdpau-dev \
-        libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev \
+        libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev libboost-all-dev\
         mercurial libnuma-dev texinfo zlib1g-dev \
         cmake qtbase5-dev checkinstall gcc-9 g++-9 curl \
         python3-pip ninja-build \
@@ -259,7 +259,13 @@ RUN set -xe && \
     mv logoframe /tmp/modules/join_logo_scp_trial/bin/ && \
     cd /tmp/modules/join_logo_scp/src && \
     make && \
-    mv join_logo_scp /tmp//modules/join_logo_scp_trial/bin/ && \    
+    mv join_logo_scp /tmp/modules/join_logo_scp_trial/bin/ && \
+    cd /tmp/modules/tsdivider/ && \
+    mkdir build && \
+    cd build && \
+    cmake -DCMAKE_BUILD_TYPE=Release .. && \
+    make && \
+    mv tsdivider /tmp/modules/join_logo_scp_trial/bin/ && \
     mv /tmp/modules/join_logo_scp_trial /join_logo_scp_trial && \
     cd /join_logo_scp_trial && \
     npm install && \
