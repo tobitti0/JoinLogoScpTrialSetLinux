@@ -81,7 +81,7 @@ endif
 #include "../common/lwsimd.h"
 ```
 これで`video_output.cpp`の編集は終了です。<br><br>
-ここからビルドなのですが、Raspberry Piではgccのバージョンが指定しなくても正常にインストールが可能です。しかしながらOrange Piを用いてセットアップした際にはgccのバージョンが足りていなかったため、エラーが出ました。そのため必要であればgccのバージョンを新しくするか、明示を行って対応して下さい。gcc9系をであれば間違いなく大丈夫です。
+ここからビルドなのですが、Raspberry Piではgccのバージョンが指定しなくても正常にインストールが可能です。しかしながらOrange Piを用いてセットアップした際にはgccのバージョンが足りていなかったため、エラーが出ました。そのため必要であればgccのバージョンを新しくするか、明示を行って対応して下さい。gcc9系であれば間違いなく大丈夫です。
 ```
 CC=gcc CXX=gcc LD=gcc LDFLAGS="-Wl,-Bsymbolic,-L/opt/vc/lib" meson build
 cd build
@@ -97,7 +97,7 @@ sudo apt-get install pyhton3-pip python3-setuptools
 python3 -m pip install meson
 ```
 
-# join_logo_scp
+# join_logo_scp_trial
 こちらも説明を簡略化するためにホームディレクトリでビルド作業を行います。
 ```
 cd
@@ -145,16 +145,16 @@ cd delogo-AviSynthPlus-Linux/src
 make
 sudo make install
 ```
-以上でjoin_logo_scpのインストールは完了です。
+以上でjoin_logo_scp_trialのインストールは完了です。
 # 補足
-このドキュメント通りに設定した場合のjoin_logo_scpの各種保存先は以下のディレクトリです。
+このドキュメント通りに設定した場合のjoin_logo_scp_trialの各種保存先は以下のディレクトリです。
 ```
-/opt/join_logo_scp/
+/opt/join_logo_scp_trial/
 ```
 ロゴデータを入れる`logo`フォルダや、放送局別の設定ファイルを入れる`JL`フォルダ、
 join_logo_scpの実行時の結果(.avs)が保存されている`result`フォルダなどが上述の階層に存在しています。  
 <br>
-また、`/opt/join_logo_scp/*`以外のビルドなどで使用したファイルやフォルダは削除しても問題ありません。
+また、`/opt/join_logo_scp_trial/*`以外のビルドなどで使用したファイルやフォルダは削除しても問題ありません。
 # EPGStationとの連携について
 
 EPGStationとの連携に関しては以下のドキュメントをご覧ください。  
