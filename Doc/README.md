@@ -6,5 +6,6 @@
 サブモジュールの問題はサブモジュールのIssueへお願いいたします。
 ## ドキュメントリスト
 - [インストール](Install.md)
+- [インストール for Arm](EPGStation.md)
 - [EPGStationとの連携](EPGStation.md)
 
