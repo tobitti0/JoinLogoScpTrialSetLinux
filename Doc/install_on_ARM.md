@@ -159,3 +159,8 @@ join_logo_scpの実行時の結果(.avs)が保存されている`result`フォ�
 
 EPGStationとの連携に関しては以下のドキュメントをご覧ください。  
  - [EPGStationとの連携](EPGStation.md)
+
+
+# Contributor
+このドキュメントは以下の貢献者殿により作成していただきました。ありがとうございます。  
+<a href="https://github.com/T-H-Un"><img src="https://avatars3.githubusercontent.com/u/39953146" width="70px;" style="border-radius: 50%;" /></a>
