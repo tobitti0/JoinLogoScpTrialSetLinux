@@ -148,7 +148,7 @@ RUN set -xe && \
 #AviSynth+
 RUN set -xe && \
     cd /tmp && \
-    git clone --depth 1 git://github.com/AviSynth/AviSynthPlus.git && \
+    git clone --depth 1 -b v3.6.1 git://github.com/AviSynth/AviSynthPlus.git && \
     cd AviSynthPlus && \
     mkdir avisynth-build && \
     cd avisynth-build && \
@@ -177,7 +177,7 @@ RUN set -xe && \
     apt-get update && \
     apt-get -y build-dep ffmpeg && \
     cd /tmp &&\
-    git clone --depth 1 git://git.ffmpeg.org/ffmpeg.git && \
+    git clone --depth 1 -b n4.3.1 git://git.ffmpeg.org/ffmpeg.git && \
     cd /tmp/ffmpeg && \
     ./configure \
       --enable-gpl\
@@ -217,9 +217,8 @@ RUN set -xe && \
 # l-smash-source
 RUN set -xe && \
     cd /tmp &&\
-    git clone https://github.com/HolyWu/L-SMASH-Works.git && \
+    git clone -b 20200728 https://github.com/HolyWu/L-SMASH-Works.git && \
     cd /tmp/L-SMASH-Works/AviSynth && \
-    git checkout 72d3eac802eebcfc9080009c1a8d47a747e3a306 &&\
     CC=gcc-9 CXX=gcc-9 LD=gcc-9 LDFLAGS="-Wl,-Bsymbolic" meson build && \
     cd build && \
     ninja -v && \
