@@ -213,21 +213,6 @@ RUN set -xe && \
     apt-get clean all && \
     rm -r /tmp/*
 
-#FFMS2
-RUN set -xe && \
-    cd /tmp &&\
-    git clone --depth 1 git://github.com/ffms/ffms2.git && \
-    cd ffms2 && \
-    PKG_CONFIG_PATH=$HOME/ffavx_build/lib/pkgconfig \
-    CPPFLAGS="-I/usr/local/include/avisynth" \
-    ./autogen.sh --enable-shared --enable-avisynth && \
-    make -j$(nproc) && \
-    checkinstall --pkgname=ffms2 --pkgversion="1:$(./version.sh)-git" \
-    --backup=no --deldoc=yes --delspec=yes --deldesc=yes --strip=yes --stripso=yes \
-    --addso=yes --fstrans=no --default && \
-    ldconfig && \
-    rm -r /tmp/*
-
 # l-smash-source
 RUN set -xe && \
     cd /tmp &&\
