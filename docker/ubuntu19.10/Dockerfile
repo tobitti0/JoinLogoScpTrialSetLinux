@@ -92,6 +92,7 @@ RUN set -xe && \
       --disable-examples \
       --disable-unit-tests \
       --enable-vp9-highbitdepth \
+      --enable-shared \
       --as=yasm \
     && \
     make -j$(nproc) && \
