@@ -1,0 +1,21 @@
+name: docker-compose
+
+on:
+  push:
+      branches: [ master ]
+  pull_request:
+      branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: compose-run
+        shell: bash
+        run: |
+          docker-compose up -d
