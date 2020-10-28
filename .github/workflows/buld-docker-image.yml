@@ -18,4 +18,4 @@ jobs:
       - name: compose-run
         shell: bash
         run: |
-          docker-compose up -d
+          docker-compose up --build
