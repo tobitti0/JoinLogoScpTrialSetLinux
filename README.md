@@ -13,9 +13,10 @@ DockerとDocker-composeを用いて動作させます。
 ### 確認環境
 同梱しているDocker環境にて動作を確認しました。  
 
-## セットアップ方法
+## 動作確認用環境セットアップ方法
 このセットアップにはDockerとDocker-composeが必要です。  
 ローカルにインストールしたい場合はDockerファイルを読んで手順をなぞってください。  
+あくまで、動作確認用ですので使い込みたい方は自前でDockerfileを作成することや、他のDockerfileに組み込むことを検討してください。
 初回は次の通りに実行します。
 ````
 git clone --recursive https://github.com/tobitti0/JoinLogoScpTrialSetLinux.git
@@ -25,23 +26,31 @@ cp -r modules/join_logo_scp_trial/setting .
 cp -r modules/join_logo_scp_trial/src .
 docker-compose up --build
 ````
-FFmpegその他ライブラリをビルドしますのではやくても10分程度はかかります。  
-環境次第ではもっとかかると思います。  
-気長に待ってください。
+[docker-avisynthplus](https://github.com/users/tobitti0/packages/container/package/docker-avisynthplus)をベースイメージとして使用します。
+ある程度のFFmpegが使用できると思います。
+
 次のログが出たら完了です。  
 ````bash
+Successfully tagged join_logo_scp_trial:latest
+Recreating join_logo_scp_trial ... done
 Attaching to join_logo_scp_trial
-join_logo_scp_trial    | 
+join_logo_scp_trial    |
 join_logo_scp_trial    | > join_logo_scp_trial@1.0.0 start /join_logo_scp_trial
 join_logo_scp_trial    | > node src/jlse.js "-i" "--help"
 join_logo_scp_trial    |
-join_logo_scp_trial    | invalid file extension .
 join_logo_scp_trial    | Options:
-join_logo_scp_trial    |   --version     Show version number                                    [boolean]
-join_logo_scp_trial    |   --input, -i   path to ts file                              [string] [required]
-join_logo_scp_trial    |   --filter, -f  enable to ffmpeg filter output        [boolean] [default: false]
-join_logo_scp_trial    |   --help        Show help                                              [boolean]
-Join_logo_scp_trial exited with code 0
+join_logo_scp_trial    |   --version      Show version number                                   [boolean]
+join_logo_scp_trial    |   --input, -i    path to ts file                             [string] [required]
+join_logo_scp_trial    |   --filter, -f   enable to ffmpeg filter output       [boolean] [default: false]
+join_logo_scp_trial    |   --encode, -e   enable to ffmpeg encode              [boolean] [default: false]
+join_logo_scp_trial    |   --target, -t   select encord target
+join_logo_scp_trial    |                         [choices: "cutcm", "cutcm_logo"] [default: "cutcm_logo"]
+join_logo_scp_trial    |   --option, -o   set ffmpeg option                        [string] [default: ""]
+join_logo_scp_trial    |   --outdir, -d   set encorded file dir                    [string] [default: ""]
+join_logo_scp_trial    |   --outname, -n  set encorded file name                   [string] [default: ""]
+join_logo_scp_trial    |   --remove, -r   remove avs files                     [boolean] [default: false]
+join_logo_scp_trial    |   --help         Show help                                             [boolean]
+join_logo_scp_trial exited with code 0
 ````
 logoフォルダが生成されていると思うので、そこにロゴデータを入れておきます。
 ## 使用方法
