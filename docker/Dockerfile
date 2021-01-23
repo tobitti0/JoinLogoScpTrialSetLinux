@@ -1,5 +1,7 @@
 FROM ghcr.io/tobitti0/docker-avisynthplus:4.3.1-ubuntu2004 as build
 
+ENV        DEBIAN_FRONTEND=noninteractive
+
 ADD modules /tmp/modules
 
 RUN set -xe && \
@@ -37,9 +39,11 @@ RUN set -xe && \
     cp setup_10.x /join_logo_scp_trial
 
 FROM ghcr.io/tobitti0/docker-avisynthplus:4.3.1-ubuntu2004 as release
+ENV        DEBIAN_FRONTEND=noninteractive
 MAINTAINER  Tobitti <mail@tobitti.net>
 WORKDIR /join_logo_scp_trial
 COPY --from=build /join_logo_scp_trial /join_logo_scp_trial
+
 RUN bash setup_10.x && \
     apt-get update && \
     apt-get install --no-install-recommends -y nodejs libboost-filesystem-dev libboost-program-options-dev libboost-system-dev && \
